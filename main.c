@@ -1,5 +1,5 @@
 #include <stdio.h>
 
-int func(int, int);
+int func(short, short);
 
-int main() { printf("3 + 2 = %d\n", func(2, 3)); }
+int main() { printf("3 * 2 = %d\n", func(2, 3)); }
