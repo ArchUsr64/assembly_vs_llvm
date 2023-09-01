@@ -1,5 +1,12 @@
 #include <stdio.h>
+#include <string.h>
 
-int func(short, short);
+unsigned long search(unsigned long, unsigned long, char);
 
-int main() { printf("3 * 2 = %d\n", func(2, 3)); }
+int main() {
+  char *data = "helloassembly!";
+  unsigned long len = strlen(data);
+  for (unsigned long i = 0; i < len; i++)
+    printf("Found '%c' at index: %lu\n", data[i],
+           search((unsigned long)data, (unsigned long)len, data[i]));
+}
