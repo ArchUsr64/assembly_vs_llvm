@@ -26,7 +26,7 @@ search:
     and %rcx, %rcx
     jnz test_success
     cmp %dl, BYTE PTR [%rdi - 1]
-    jpe test_success
+    je test_success
     ; key not found
     mov %rax, -1
     ret
