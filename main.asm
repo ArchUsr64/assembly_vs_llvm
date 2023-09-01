@@ -3,6 +3,7 @@
 .globl func
 .type func, @function
 func:
-    movd %eax, 1234
+    addd %esi, %edi
+    movd %eax, %esi
     ret
 

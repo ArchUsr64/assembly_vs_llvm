@@ -1,7 +1,5 @@
 #include <stdio.h>
 
-int func();
+int func(int, int);
 
-int main() {
-	printf("Should print 1234: %d\n", func());
-}
+int main() { printf("3 + 2 = %d\n", func(2, 3)); }
