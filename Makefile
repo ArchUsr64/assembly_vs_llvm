@@ -2,7 +2,7 @@ bin: main.o asm.o
 	@clang main.o asm.o -g -o bin
 
 main.o: main.c
-	@clang -c main.c -g -o main.o
+	@clang -c main.c -O3 -g -o main.o
 
 main.preprocessed: main.asm
 	@sed 's/;/#/g' main.asm > main.preprocessed
