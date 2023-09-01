@@ -1,12 +1,14 @@
 bin: main.o asm.o
-	clang main.o asm.o -g -o bin
+	@clang main.o asm.o -g -o bin
 
 main.o: main.c
-	clang -c main.c -g -o main.o
+	@clang -c main.c -g -o main.o
 
-asm.o: main.asm
-	as main.asm -g -o asm.o
+main.preprocessed: main.asm
+	@sed 's/;/#/g' main.asm > main.preprocessed
+
+asm.o: main.preprocessed
+	@as main.preprocessed -g -o asm.o
 
 clean:
-	rm *.o
-	rm bin
+	@rm *.o bin *.preprocessed
