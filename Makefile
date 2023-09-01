@@ -6,3 +6,7 @@ main.o: main.c
 
 asm.o: main.asm
 	as main.asm -o asm.o
+
+clean:
+	rm *.o
+	rm bin
