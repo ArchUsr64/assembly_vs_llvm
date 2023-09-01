@@ -1,11 +1,11 @@
 bin: main.o asm.o
-	clang main.o asm.o -o bin
+	clang main.o asm.o -g -o bin
 
 main.o: main.c
-	clang -c main.c -o main.o
+	clang -c main.c -g -o main.o
 
 asm.o: main.asm
-	as main.asm -o asm.o
+	as main.asm -g -o asm.o
 
 clean:
 	rm *.o
