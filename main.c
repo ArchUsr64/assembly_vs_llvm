@@ -1,8 +1,8 @@
+#include "data.c"
 #include <stdio.h>
 #include <string.h>
 #include <sys/resource.h>
 #include <sys/time.h>
-#include "data.c"
 
 double get_time() {
   struct timeval t;
@@ -21,7 +21,7 @@ unsigned long search_c(unsigned char *data, unsigned long len,
   return (i < len) * (i - 1) + (i >= len) * -1;
 }
 
-int main() {
+void benchmark_search() {
   unsigned long len = sizeof(data);
   unsigned char const key = 172;
   int count = 1000000;
@@ -49,4 +49,8 @@ int main() {
   } else {
     printf("LLVM faster by %.2lfx\n", ratio);
   }
+}
+
+int main() {
+  benchmark_search();
 }
