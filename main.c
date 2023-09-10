@@ -30,13 +30,13 @@ unsigned long search_c(unsigned char *data, unsigned long len,
   return (i < len) * (i - 1) + (i >= len) * -1;
 }
 
-void print_results(const char* test_name, double asm_time, double c_time) {
-  printf("[%s] =>\n\tASM: %lf vs LLVM: %lf\n", test_name, asm_time, c_time);
+void print_results(const char *test_name, double asm_time, double c_time) {
+  printf("[%s] =>\n\tASM: %.2lfms vs LLVM: %.2lfms\n", test_name, asm_time * 1000, c_time * 1000);
   double ratio = c_time / asm_time;
   if (ratio > 1) {
     printf("\tASM faster by %.2lfx\n", ratio);
   } else {
-    printf("\tLLVM faster by %.2lfx\n", ratio);
+    printf("\tLLVM faster by %.2lfx\n", 1 / ratio);
   }
 }
 
