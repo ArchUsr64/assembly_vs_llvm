@@ -1,7 +1,7 @@
 bin: main.o asm.o
 	@clang main.o asm.o -g -o bin
 
-main.o: main.c
+main.o: main.c data.c
 	@clang -c main.c -O3 -g -o main.o
 
 main.preprocessed: main.asm

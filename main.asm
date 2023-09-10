@@ -1,8 +1,13 @@
 .intel_mnemonic
 .intel_syntax
 .text
+
 .globl search
 .type search, @function
+
+.global str_cmp
+.type str_cmp, @function
+
 search:
     ; Input Parameters:
         ; rdi -> pointer to search data
@@ -35,3 +40,28 @@ test_success:
     mov %rax, %r8
     ret
 
+str_cmp:
+    ; Input Parameters:
+        ; rdi -> pointer to s1
+        ; rsi -> pointer to s2
+        ; rdx -> length to search for
+
+    ; Returns 0 if both strings are equal, 1 else
+
+    ; Setup for cmpsb:
+        ; rsi -> s1
+        ; rdi -> s2
+        ; rcx -> counter
+        ; clear direction flag to auto-increment rdi and rsi
+
+    cld
+    mov %rcx, %rdx
+    repe cmpsb
+    ; Check if rcx is 0
+    and %rcx, %rcx
+    jz equal
+    mov %rax, 1
+    ret
+equal:
+    mov %rax, 0
+    ret
